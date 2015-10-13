@@ -1,4 +1,4 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding AfterBuild='copy' Clean='clean' />
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),
@@ -27,6 +27,28 @@ gulp.task("clean:css", function (cb) {
 });
 
 gulp.task("clean", ["clean:js", "clean:css"]);
+
+gulp.task("copy", ["clean"], function () {
+    var bower = {
+        "bootstrap": "bootstrap/dist/**/*.{js,map,css,ttf,svg,woff,eot}",
+        "bootstrap-touch-carousel": "bootstrap-touch-carousel/dist/**/*.{js,css}",
+        "hammer.js": "hammer.js/hammer*.{js,map}",
+        "jquery": "jquery/jquery*.{js,map}",
+        "jquery-validation": "jquery-validation/jquery.validate.js",
+        "jquery-validation-unobtrusive": "jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+        "angular": "angular/angular*.{js,map}",
+        "angular-route": "angular-route/angular-route*.{js,map}",
+        "angular-resource": "angular-resource/angular-resource*.{js,map}"
+    }
+
+
+    for (var destinationDir in bower) {
+        gulp.src(paths.bower + bower[destinationDir])
+          .pipe(gulp.dest(paths.lib + destinationDir));
+
+    }
+
+});
 
 gulp.task("min:js", function () {
     gulp.src([paths.js, "!" + paths.minJs], { base: "." })
