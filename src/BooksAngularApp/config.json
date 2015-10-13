@@ -1,0 +1,7 @@
+{
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-BooksAngularApp-ca266d15-d946-439a-87f8-0cf81bf82a93;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}
