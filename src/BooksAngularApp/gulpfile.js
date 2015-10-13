@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='copy' Clean='clean' />
+﻿/// <binding Clean='clean' />
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),
@@ -8,7 +8,9 @@ var gulp = require("gulp"),
     project = require("./project.json");
 
 var paths = {
-    webroot: "./" + project.webroot + "/"
+    webroot: "./" + project.webroot + "/",
+    app: "./" + project.webroot + "/app/",
+    srcapp:  "./app/"
 };
 
 paths.js = paths.webroot + "js/**/*.js";
@@ -48,6 +50,25 @@ gulp.task("copy", ["clean"], function () {
 
     }
 
+});
+
+gulp.task("cleanappp", function (cb) {
+    rimraf(paths.app, cb);
+
+});
+
+
+gulp.task("copyapp", ["cleanappp"], function () {
+    var app = {
+        "controllers": "controllers/booksController.js",
+        "services": "services/booksServices*.js",
+        "/": "app.js"
+    }
+
+    for (var destinationDir in app) {
+        gulp.src(paths.srcapp + app[destinationDir])
+          .pipe(gulp.dest(paths.app + destinationDir));
+    }
 });
 
 gulp.task("min:js", function () {
