@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNET_ENV": "Development"
+      }
+    },
+    "web": {
+      "commandName": "web",
+      "workingDirectory": "C:\\Users\\Nicky\\Source\\Repos\\AngularJs\\BooksAngularApp\\src\\BooksAngularApp",
+      "launchBrowser": true,
+      "launchUrl": "localhost:5000",
+      "sdkVersion": "dnx-clr-win-x86.1.0.0-beta7"
+    }
+  }
+}
