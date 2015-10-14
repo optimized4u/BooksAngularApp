@@ -1,4 +1,4 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding Clean='clean, cleanappp' />
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),
